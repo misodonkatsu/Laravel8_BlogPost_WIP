@@ -29,8 +29,8 @@
                 {{-- logoutはPOSTのみ。よってJS経由でformを送る --}}
                 <a href="{{ route('logout') }}" class="p-2 text-dark"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                >Logout</a>
-                
+                >Logout ({{ Auth::user()->name }})</a>
+
                 <form id="logout-form" action={{ route('logout') }} method="POST"
                 style="display: none;">
                     @csrf
