@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\BlogPost;
+use App\Models\Comment;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PostTest extends TestCase
@@ -37,6 +38,21 @@ class PostTest extends TestCase
             'title' => 'I am changed!',
             'content' => 'I am the content'
         ]);
+    }
+
+    public function testSee1BlogPostWithComments()
+    {
+        // Arrange
+        $post = $this->createDummyBlogPost();
+        Comment::factory(4)->create([
+            'blog_post_id' => $post->id
+        ]);
+
+        // Act
+        $response = $this->get('/posts');
+
+        // Assert
+        $response->assertSeeText('4 comments');
     }
 
     public function testStoreValid()
@@ -120,11 +136,7 @@ class PostTest extends TestCase
 
     private function createDummyBlogPost(): BlogPost
     {
-        $post = new BlogPost();
-        $post->title = 'I am changed!';
-        $post->content = 'I am the content';
-        $post->save();
-
-        return $post;
+        // $post
+        return \App\Models\BlogPost::factory()->newTitle()->create();
     }
 }
