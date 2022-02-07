@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>a {text-decoration: none}</style>
     <script defer src="{{ asset('js/app.js') }}"></script>
+    <script defer src="{{ mix('js/function.js') }}"></script>
 <title>Laravel App - @yield('title')</title>
 </head>
 <body>

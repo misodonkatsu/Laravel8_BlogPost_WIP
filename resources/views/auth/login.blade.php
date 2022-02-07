@@ -5,7 +5,7 @@
 
         <div class="form-group">
             <label>E-mail</label>
-            <input name="email" value="{{ old('email') }}" required
+            <input name="email" value="{{ old('email', 'testMail@gmail.com') }}" required
                 class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}">
 
             @if ($errors->has('email'))
@@ -17,7 +17,7 @@
 
         <div class="form-group">
             <label>Password</label>
-            <input name="password" required type="password"
+            <input name="password" required type="password" value="{{ old('password', 'password') }}"
                 class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
 
             @if ($errors->has('password'))
